@@ -248,7 +248,7 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-
+  'ellisonleao/gruvbox.nvim',
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -1014,3 +1014,20 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+-- Move line down (normal mode)
+vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { desc = 'Move line down', silent = true })
+
+-- Move line up (normal mode)
+vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { desc = 'Move line up', silent = true })
+
+-- Move selected block down (visual mode)
+vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move block down', silent = true })
+
+-- Move selected block up (visual mode)
+vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move block up', silent = true })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file', silent = true })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = 'Save file', silent = true })
+vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>gv', { desc = 'Save file', silent = true })
+vim.opt.relativenumber = true
+vim.o.background = 'dark'
+vim.cmd [[colorscheme gruvbox]]
